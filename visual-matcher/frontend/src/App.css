@@ -1,0 +1,227 @@
+/* --- Global Styles & Fonts --- */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* --- THIS IS THE CORRECTED CENTERING CODE --- */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* This is the key change for vertical centering */
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* --- Main App Layout & Container --- */
+.container {
+  width: 100%;
+  max-width: 1280px;
+}
+
+/* --- Header Section --- */
+.header {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+.header h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.header p {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+/* --- Main Content Grid --- */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .main-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .main-grid > .card:first-child {
+    width: 380px;
+    flex-shrink: 0;
+  }
+  .main-grid > .card:last-child {
+    width: 640px;
+    flex-shrink: 0;
+  }
+}
+
+/* --- General Card Styling --- */
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* --- (Rest of the CSS is the same) --- */
+.upload-form label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #374151;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.url-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.url-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+  outline: none;
+}
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #9ca3af;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+.file-input-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  color: #374151;
+  transition: background-color 0.2s;
+}
+.file-input-button:hover {
+  background-color: #f9fafb;
+}
+.file-name {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+}
+.submit-button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+.submit-button:hover {
+  background-color: #1d4ed8;
+}
+.submit-button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.filter-container label {
+  font-weight: 500;
+}
+.placeholder-container {
+  text-align: center;
+  padding: 4rem 1rem;
+  border: 2px dashed #e5e7eb;
+  border-radius: 0.5rem;
+  color: #6b7280;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.product-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: #f3f4f6;
+}
+.product-info {
+  padding: 1rem;
+}
+.product-name {
+  font-weight: 600;
+  color: #111827;
+}
+.product-similarity {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #1d4ed8;
+  font-weight: 500;
+}
+.error-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #ffffff33;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.75rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+Pillow
+google-generativeai
+python-dotenv
+python-multipart
+numpy
+Pillow
+requests
+tqdm
