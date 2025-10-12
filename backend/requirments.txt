@@ -1,10 +1,11 @@
 fastapi
 uvicorn
 Pillow
-google-generativeai
-python-dotenv
-python-multipart
 numpy
-Pillow
+scipy
+python-multipart
+torch
+torchvision
+scikit-learn
 requests
 tqdm
