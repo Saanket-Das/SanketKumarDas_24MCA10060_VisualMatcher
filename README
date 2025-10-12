@@ -1,0 +1,108 @@
+# Visual Product Matcher
+
+A full-stack web application that allows users to upload an image of a product and find visually similar items from a large product catalog using a deep learning model.
+
+**Live Frontend URL:** [Your Vercel URL Here]  
+**Live Backend URL:** [Your Render URL Here]
+
+![Project Screenshot](https://i.imgur.com/your-screenshot-url.png) 
+*(Suggestion: Take a screenshot of your final working application and upload it to a site like Imgur, then replace the URL above to showcase your work.)*
+
+---
+
+## Project Overview
+
+This application was developed as a technical assessment for a software engineering position. It demonstrates the implementation of a complete full-stack solution, from a modern user interface to a powerful AI/ML backend.
+
+The core of the project is its visual search capability, which goes beyond simple text or color matching. It analyzes the shapes, textures, and patterns within an image to find genuinely similar products.
+
+### Key Features
+
+-   **Image Upload:** A clean, responsive interface for users to upload an image file from their device.
+-   **AI-Powered Visual Search:** The backend uses a deep learning model (ResNet50) to generate a unique "feature vector" (a numerical fingerprint) for the uploaded image.
+-   **Similarity Matching:** This vector is compared against a pre-calculated database of over 1,000 product image vectors using cosine similarity to find the closest matches.
+-   **Dynamic Filtering:** Users can filter the search results in real-time using a similarity score slider to narrow down the matches.
+-   **Responsive Design:** The UI is built to be fully functional and aesthetically pleasing on both desktop and mobile devices.
+
+---
+
+## Technical Details & Architecture
+
+### Tech Stack
+
+-   **Frontend:** React (built with Vite), CSS3, Axios
+-   **Backend:** Python 3, FastAPI
+-   **AI / Machine Learning:** PyTorch (for the pre-trained ResNet50 model), Scikit-learn (for similarity calculation)
+-   **Image Processing:** Pillow, NumPy
+
+### How the Visual Search Works
+
+The visual search is not based on simple color matching. It leverages a deep learning technique called **feature extraction**.
+
+1.  **Preprocessing (One-Time Task):** Before the server starts, a script (`preprocess.py`) runs on the backend. It takes every product image from the database and uses the ResNet50 neural network to convert it into a high-dimensional feature vector. This vector is a numerical representation of the image's content. All these vectors are saved to a `features.pkl` file.
+2.  **Real-Time Search:** When a user uploads an image, the server generates a feature vector for that image in the same way.
+3.  **Comparison:** The server then uses a highly efficient mathematical formula (cosine similarity) to compare the user's vector against all the vectors stored in `features.pkl`.
+4.  **Ranking:** The products are ranked by their similarity score, and the top 20 matches are sent back to the frontend.
+
+This approach is powerful because it understands complex visual patterns, leading to more intuitive and accurate search results.
+
+---
+
+## How to Run This Project Locally
+
+To run this application on your local machine, you will need two separate terminals.
+
+### Backend Setup
+
+1.  **Navigate to the Backend Folder:**
+    ```bash
+    cd backend
+    ```
+
+2.  **Create and Activate a Python Virtual Environment:**
+    ```bash
+    # Create the environment
+    python -m venv venv
+
+    # Activate it (Windows)
+    .\venv\Scripts\activate
+    ```
+
+3.  **Install All Required Libraries:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Download and Process the Data (One-Time Setup):**
+    *First, download all the product images:*
+    ```bash
+    python download_images.py
+    ```
+    *Then, run the AI model to create the feature vectors. **This will take several minutes.** *
+    ```bash
+    python preprocess.py
+    ```
+
+5.  **Start the Backend Server:**
+    ```bash
+    uvicorn main:app --reload
+    ```
+    The backend API will now be running at `http://127.0.0.1:8000`.
+
+### Frontend Setup
+
+1.  **Navigate to the Frontend Folder (in a new terminal):**
+    ```bash
+    cd frontend
+    ```
+
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the Frontend Application:**
+    ```bash
+    npm run dev
+    ```
+    The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
